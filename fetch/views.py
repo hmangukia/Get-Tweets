@@ -7,10 +7,10 @@ def home(request):
     username = request.POST['username']
     hashtag = request.POST['hashtag']
     count = request.POST['count']
-    consumer_key = "euF2vpAKFSeffdlvY6OLGKjyb"
-    consumer_secret = "PDukSba2b7QnQJQPwju8lQhMl0LcJmuK06C0hxs0kY9B7M77ER"
-    access_token = "3503980812-Tt3BTqPf2u7FtUeLRtwJvjTzdtqRZ47O6EhdQzU"
-    access_token_secret = "8lAmwKFB8Kg5xv6Rd8dQ7uVoHnpA5ZD60GL24hgTcdD0l"
+    consumer_key = "your consumer key here"
+    consumer_secret = "your consumer secret key here"
+    access_token = "your access token here"
+    access_token_secret = "your access tokey secret key here"
     # Creating the authentication object
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     # Setting your access token and secret
