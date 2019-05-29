@@ -2,22 +2,39 @@
 {% load static %}
 {% block page_content %}
 
-<html>
-   <body>
-      
-      <form action = "" method = "POST" class="form-horizontal">{% csrf_token %}
-         
-               <input type = "text" placeholder = "username" name = "username" />
-            
-               <input type = "text" placeholder = "hashtag" name = "hashtag" /> 
-            
-               <button type = "submit" value = "Fetch" >
-                  <strong>Fetch</strong>
-               </button>
-         
-      </form>
-      
-   </body>
-</html>
+<table align="center">
 
+<form action = "" method="POST" class="form-horizontal">{% csrf_token %}
+         
+   <tr>
+      <td>
+         Username:
+      </td>
+      <td>
+         <input type = "text" placeholder = "username" name = "username" />
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Hashtag:
+      </td>
+      <td>
+         <input type = "text" placeholder = "hashtag" name = "hashtag" />
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Number:
+      </td>
+      <td>
+         <input type = "text" placeholder = "count" name = "count" />
+      </td>
+   </tr>
+   <tr>
+      <td><centre><button class="btn btn-primary btn-lg" type="submit" value="Fetch">Fetch</button></centre></td>
+   </tr>  
+         
+</form>
+
+</table>
 {% endblock %}

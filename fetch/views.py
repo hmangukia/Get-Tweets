@@ -1,12 +1,12 @@
 from django.shortcuts import render
 import tweepy
-# Create your views here.
 
 def home(request):
   if request.method == "POST":
     
     username = request.POST['username']
     hashtag = request.POST['hashtag']
+    count = request.POST['count']
     consumer_key = "euF2vpAKFSeffdlvY6OLGKjyb"
     consumer_secret = "PDukSba2b7QnQJQPwju8lQhMl0LcJmuK06C0hxs0kY9B7M77ER"
     access_token = "3503980812-Tt3BTqPf2u7FtUeLRtwJvjTzdtqRZ47O6EhdQzU"
@@ -20,20 +20,23 @@ def home(request):
     tweets = []
     hashtags = []
     if hashtag == "" and username != "":
-      for tweet in api.user_timeline(id=username, count=5):
+      for tweet in api.user_timeline(id=username, count=count):
         tweets.append(tweet.text)
     elif username == "" and hashtag != "":
       hashtag = "#" + hashtag
-      for tweet in api.search(q=hashtag, lang="en", count=5):
+      for tweet in api.search(q=hashtag, lang="en", count=count):
+        hashtags.append(tweet.text)
+    elif username != "" and hashtag != "":
+      hashtag = "#" + hashtag
+      for tweet in api.user_timeline(id=username, count=count):
+        tweets.append(tweet.text)
+      for tweet in api.search(q=hashtag, lang="en", count=count):
         hashtags.append(tweet.text)
     else:
-      hashtag = "#" + hashtag
-      for tweet in api.user_timeline(id=username, count=5):
-        tweets.append(tweet.text)
-      for tweet in api.search(q=hashtag, lang="en", count=5):
-        hashtags.append(tweet.text)
+      tweets.append("No Data")
+      hashtags.append("No Data")
 
-    return render(request, 'result.html', {'tweets': tweets, 'hashtags': hashtags})
+    return render(request, 'result.html', {'tweets': tweets, 'hashtags': hashtags, 'username': username, 'hashtag': hashtag})
   
   else:
     return render(request, 'home.html', {})
