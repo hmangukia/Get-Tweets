@@ -2,7 +2,13 @@
 {% load static %}
 {% block page_content %}
 
-<h1>{{username}}</h1>
-<h4>{{tweets}}</h4>
+<h1>Hashtags</h1>
+{% for h in hashtags %}
+<h4>{{h}}</h4>
+{% endfor %}
+<h1>Username</h1>
+{% for t in tweets %}
+<h4>{{t}}</h4>
+{% endfor %}
 
 {% endblock %}

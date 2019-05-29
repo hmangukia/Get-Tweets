@@ -7,7 +7,6 @@ def home(request):
     
     username = request.POST['username']
     hashtag = request.POST['hashtag']
-    
     consumer_key = "euF2vpAKFSeffdlvY6OLGKjyb"
     consumer_secret = "PDukSba2b7QnQJQPwju8lQhMl0LcJmuK06C0hxs0kY9B7M77ER"
     access_token = "3503980812-Tt3BTqPf2u7FtUeLRtwJvjTzdtqRZ47O6EhdQzU"
@@ -18,16 +17,23 @@ def home(request):
     auth.set_access_token(access_token, access_token_secret)
     # Creating the API object while passing in auth information
     api = tweepy.API(auth)
-    tweets = ""
-    hashtag = ""
-    for tweet in api.user_timeline(id=username, count=5):
-      tweets += tweet.text
-    for ht in api.search(q=hashtag, lang="en"):
-      t = ht.user.screen_name + "Tweeted:" + ht.text
-      hashtag += t
-      t = ""
+    tweets = []
+    hashtags = []
+    if hashtag == "" and username != "":
+      for tweet in api.user_timeline(id=username, count=5):
+        tweets.append(tweet.text)
+    elif username == "" and hashtag != "":
+      hashtag = "#" + hashtag
+      for tweet in api.search(q=hashtag, lang="en", count=5):
+        hashtags.append(tweet.text)
+    else:
+      hashtag = "#" + hashtag
+      for tweet in api.user_timeline(id=username, count=5):
+        tweets.append(tweet.text)
+      for tweet in api.search(q=hashtag, lang="en", count=5):
+        hashtags.append(tweet.text)
 
-    return render(request, 'result.html', {'tweets': tweets, 'username': username})
+    return render(request, 'result.html', {'tweets': tweets, 'hashtags': hashtags})
   
   else:
     return render(request, 'home.html', {})
