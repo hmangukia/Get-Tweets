@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<html>
+   <body>
+      
+      <form action = "" method = "POST" class="form-horizontal">{% csrf_token %}
+         
+               <input type = "text" placeholder = "username" name = "username" />
+            
+               <input type = "text" placeholder = "hashtag" name = "hashtag" /> 
+            
+               <button type = "submit" value = "Fetch" >
+                  <strong>Login</strong>
+               </button>
+         
+      </form>
+      
+   </body>
+</html>
+
+{% endblock %}
