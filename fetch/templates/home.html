@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
+<br><br>
+<div class="card" style="margin-left:auto;margin-right:auto; width: 50%">
+<table class="table table-borderless">
 
-<table align="center">
-
-<form action = "" method="POST" class="form-horizontal">{% csrf_token %}
-         
+<form action = "" method="POST" >{% csrf_token %}
+<div class="container">
    <tr>
       <td>
          Username:
       </td>
       <td>
-         <input type = "text" placeholder = "username" name = "username" />
+         <input type = "text" class="form-control" placeholder = "username" name = "username" />
       </td>
    </tr>
    <tr>
@@ -19,7 +20,7 @@
          Hashtag:
       </td>
       <td>
-         <input type = "text" placeholder = "hashtag" name = "hashtag" />
+         <input type = "text" class="form-control"placeholder = "hashtag" name = "hashtag" />
       </td>
    </tr>
    <tr>
@@ -27,14 +28,13 @@
          Number:
       </td>
       <td>
-         <input type = "text" placeholder = "count" name = "count" />
+         <input type = "text" class="form-control" placeholder = "count" name = "count" />
       </td>
    </tr>
-   <tr>
-      <td><centre><button class="btn btn-primary btn-lg" type="submit" value="Fetch">Fetch</button></centre></td>
+   <tr><td></td><td><button class="btn btn-primary btn-lg" type="submit" value="Fetch">Fetch</button></td>
    </tr>  
-         
+</div> 
 </form>
-
+</div>
 </table>
 {% endblock %}

@@ -2,14 +2,14 @@
 {% load static %}
 {% block page_content %}
 
-<div style="width: 100%; overflow:auto; font-family: 'Poppins'">
-    <div style="float:left; width: 50%; padding-left: 3%; padding-right: 3%; ">
+<div style="width: 97%; overflow:auto; font-family: 'Poppins'" class="center">
+    <div style="float:left; width: 48%; padding-left: 3%; padding-right: 3%; padding-top: 3%; padding-bottom: 3%;" class="card">
         <h2 style="font-family: 'Acme', cursive;">Username: @{{ username }}</h2>
         {% for t in tweets %}
         <h6>{{t}}</h6>
         {% endfor %}
     </div>
-    <div style="float:right; width: 50%; padding-left: 3%; padding-right: 3%;">
+    <div style="float:right; width: 48%; padding-left: 3%; padding-right: 3%; padding-top: 3%; padding-bottom: 3%;" class="card">
         <h2 style="font-family: 'Acme', cursive;">Hashtags: {{ hashtag }}</h2>
         {% for h in hashtags %}
         <h6>{{h}}</h6>
